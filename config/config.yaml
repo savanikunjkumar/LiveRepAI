@@ -1,1 +1,39 @@
+# Application configuration
+app:
+  name: CallSage
+  environment: dev
+  log_level: DEBUG
 
+api:
+  host: 0.0.0.0
+  port: 8000
+
+asr:
+  provider: whisper
+  model: base
+  chunk_size_ms: 1000
+  language: en
+
+nlp:
+  intent_threshold: 0.7
+  question_threshold: 0.6
+  sentiment_window: 5
+
+retriever:
+  top_k: 5
+  index_path: data/processed/faiss_index
+
+rag:
+  model_endpoint: http://localhost:8501
+  max_context_tokens: 2048
+
+database:
+  url: postgresql://user:password@localhost:5432/callsage
+
+storage:
+  bucket: callsage-dev
+  endpoint: http://localhost:9000
+
+monitoring:
+  sentry_dsn: ""
+  prometheus_enabled: true
